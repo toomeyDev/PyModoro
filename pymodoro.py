@@ -1,26 +1,32 @@
 import time, sys, re
 from os import system, name
 
-def countdown(t):
+def countdown(t=1500):
+    clear_screen()
+    print("Timer:\n")
     while t > 0:
         mins, secs = divmod(t, 60)
         timer = "{:002d}:{:002d}".format(mins, secs)
-        print(timer, end="\r")
+        print(f"{timer}", end="\r")
         time.sleep(1)
         t -= 1
 
-    print("Timer complete, time for a break.")
+    print("\nTimer complete, time for a break.")
+    time.sleep(3)
 
 
 def break_time(t=300):
+    clear_screen()
+    print("Break Time:")
     while t > 0:
         mins, secs = divmod(t, 60)
         break_timer = "{:002d}:{:002d}".format(mins, secs)
-        print(f"Break Time: {break_timer}", end="\r")
+        print(f"{break_timer}", end="\r")
         time.sleep(1)
         t -= 1
 
-    print("Break complete, time to get back to work.")
+    print("\nBreak complete, time to get back to work.")
+    time.sleep(3)
 
 
 def exit():
@@ -50,7 +56,7 @@ def menu():
         u_input = re.sub("\D", "", u_input)
         if u_input == "0":
             print("Starting a standard timer...")
-            countdown(1500)
+            countdown()
             break_time()
         elif u_input == "1":
             print("Starting a custom timer...")
